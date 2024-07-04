@@ -1,0 +1,23 @@
+<div>
+  <img class="top-image" src="https://media.wbur.org/wp/2020/12/GettyImages-1150049038-1000x630.jpg" alt="">
+</div>
+
+<%= link_to("New list", new_list_path)%>
+
+<div class="div-margin">
+  <div class="container">
+    <div class="row">
+
+        <% @lists.each do |list| %>
+          <div class="col-4 card-area">
+            <div class="card">
+              <h2><%= list.name %></h2>
+              <h1><%= list.bookmarks.count %></h1>
+              <%= link_to 'View List', list_path(list), class: 'btn btn-primary' %>
+            </div>
+          </div>
+        <% end %>
+
+    </div>
+  </div>
+</div>
