@@ -1,5 +1,5 @@
 <div>
-  <img class="top-image" src="https://media.wbur.org/wp/2020/12/GettyImages-1150049038-1000x630.jpg" alt="">
+  <%= cl_image_tag "https://res.cloudinary.com/dyogqknd6/image/upload/v1720267707/GettyImages-1150049038-1000x630_ujdvbf.jpg", crop: :fill, style: "width: 100%; height: 500px; object-fit: cover;" %>
 </div>
 
 <%= link_to("New list", new_list_path)%>
@@ -11,6 +11,9 @@
         <% @lists.each do |list| %>
           <div class="col-4 card-area">
             <div class="card">
+              <% if list.photo.present? %>
+                <%= cl_image_tag list.photo.key %>
+              <% end %>
               <h2><%= list.name %></h2>
               <h1><%= list.bookmarks.count %></h1>
               <%= link_to 'View List', list_path(list), class: 'btn btn-primary' %>
